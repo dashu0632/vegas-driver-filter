@@ -1,5 +1,5 @@
-// Network-first HTML/JS ensures newly uploaded V8 updates replace older V7 service-worker cache.
-const CACHE='vegas-filter-v8-static-1';
+// Network-first HTML/JS ensures newly uploaded V10 updates replace older V7 service-worker cache.
+const CACHE='vegas-filter-v10-static-1';
 const LOCAL=['./','./index.html','./app.js','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(LOCAL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
